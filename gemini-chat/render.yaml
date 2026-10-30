@@ -1,0 +1,18 @@
+# Optional "Blueprint": lets Render create the service from this file.
+services:
+  - type: web
+    name: gemini-chat
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false          # you paste the real value in Render's dashboard
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: THINKING_LEVEL
+        value: low
+      - key: NODE_VERSION
+        value: "22"
